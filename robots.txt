@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kasugai-hs-u15.netlify.app/sitemap.xml
