@@ -104,5 +104,19 @@ a:hover{ text-decoration:underline; }
 /* heroを白背景向けに少し締める（任意） */
 .hero h1{ letter-spacing:0.2px; }
 
+.hero-media{
+  width:100%;
+  margin: 0 0 18px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background: #fff;
+}
 
+.hero-media img{
+  width:100%;
+  height: clamp(180px, 28vw, 320px);
+  object-fit: cover;
+  display:block;
+}
 
