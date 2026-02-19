@@ -84,3 +84,25 @@ a:hover{ text-decoration:underline; }
 .item .meta{ color:var(--muted); font-size:12px; margin-bottom:6px; }
 .item .title{ font-weight:700; margin-bottom:6px; }
 .item .body{ color:var(--muted); white-space:pre-wrap; line-height:1.75; }
+
+/* 見出しを“セクション感”出す */
+.card h2{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.card h2::before{
+  content:"";
+  width:10px; height:10px;
+  border-radius:3px;
+  background:var(--accent);
+}
+
+/* PICK UPだけ赤寄りにしたい時（任意） */
+#pickupCard h2::before{ background: var(--accent2); }
+
+/* heroを白背景向けに少し締める（任意） */
+.hero h1{ letter-spacing:0.2px; }
+
+
+
