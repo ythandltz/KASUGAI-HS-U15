@@ -62,14 +62,6 @@
   </main>
 
   <footer class="footer"><div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div></footer>
-  <script>
-      // ナビの current 表示（main.js の代替）
-      const path = location.pathname.split("/").pop() || "index.html";
-      document.querySelectorAll('a[data-nav]').forEach(a=>{
-          if(a.getAttribute("href") === path){
-              a.setAttribute("aria-current","page");
-          }
-      });
-  </script>
+  <script type="module" src="assets/main.js"></script>
 </body>
 </html>
