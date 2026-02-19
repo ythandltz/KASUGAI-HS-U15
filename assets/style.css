@@ -250,7 +250,7 @@ a:hover{ text-decoration:underline; }
 @media (max-width: 480px){
   /* トップの見出し */
   .hero h1{
-    font-size: 22px;   /* ← ここで調整 */
+    font-size: 21px;   /* ← ここで調整 */
     line-height: 1.25;
   }
 
@@ -273,8 +273,8 @@ a:hover{ text-decoration:underline; }
   }
 
   /* ヘッダーのチーム名（日本語/英字） */
-  .brand-title span{ font-size: 9px; }
-  .brand-title strong{ font-size: 23px; }
+  .brand-title span{ font-size: 10px; }
+  .brand-title strong{ font-size: 25px; }
 }
 /* スマホだけ：ロゴ/タイトルの下にナビを配置 */
 @media (max-width: 640px){
