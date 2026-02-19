@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>春日井ハンドボールスクール U-15</title>
+  <meta name="description" content="春日井ハンドボールスクール U-15 公式サイト。クラブ方針、活動の動向、スタッフ、選手募集、お問い合わせ。" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="ロゴ" />
+        <div class="brand-title">
+          <strong>春日井ハンドボールスクール U-15</strong>
+          <span>KASUGAI HANDBALL SCHOOL U-15</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a data-nav href="policy.html">方針</a>
+        <a data-nav href="news.html">動向</a>
+        <a data-nav href="staff.html">スタッフ</a>
+        <a data-nav href="recruit.html">選手募集</a>
+        <a data-nav href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>中学生年代の「伸びる土台」をつくる。</h1>
+      <p>
+        春日井ハンドボールスクール U-15 は、技術・判断・体力だけでなく、
+        仲間を尊重し継続して挑戦できる力を育てることを大切にしています。
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="recruit.html">体験参加・入会案内</a>
+        <a class="btn" href="news.html">最新の動向を見る</a>
+      </div>
+      <div class="kv">
+        <span class="badge">対象：U-15</span>
+        <span class="badge">地域：春日井周辺</span>
+        <span class="badge">体験参加：随時</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card cols-6">
+        <h2>クラブ方針</h2>
+        <p>安全最優先。段階的な育成と成功体験の積み重ねを重視します。</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="policy.html">方針を見る</a>
+        </div>
+      </div>
+
+      <div class="card cols-6">
+        <h2>選手募集</h2>
+        <p>初心者・経験者どちらも歓迎。体験参加の流れ、持ち物、よくある質問を掲載します。</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="recruit.html">募集要項を見る</a>
+        </div>
+      </div>
+
+      <div class="card cols-12">
+        <h2>最新のお知らせ（抜粋）</h2>
+        <ul class="list" id="newsList"></ul>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="news.html">動向ページへ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div>
+  </footer>
+
+  <script type="module">
+    import "./assets/main.js";
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    const res = await fetch("assets/news.json");
+    const items = await res.json();
+    const list = document.getElementById("newsList");
+    items.slice(0,2).forEach(n=>{
+      const li = document.createElement("li");
+      li.className = "item";
+      li.innerHTML = `
+        <div class="meta">${n.date}</div>
+        <div class="title">${n.title}</div>
+        <div class="body">${n.body ?? ""}</div>
+      `;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
