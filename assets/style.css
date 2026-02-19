@@ -115,7 +115,7 @@ a:hover{ text-decoration:underline; }
 
 .hero-media img{
   width:100%;
-  height: clamp(180px, 28vw, 320px);
+  height: clamp(220px, 32vw, 420px);
   object-fit: cover;
   display:block;
 }
