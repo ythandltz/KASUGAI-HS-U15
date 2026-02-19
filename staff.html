@@ -9,14 +9,15 @@
 <body>
     <header class="header">
       <div class="container header-inner">
-        <a class="brand" href="index.html">
+          <div class="brand" aria-label="春日井ハンドボールスクール U-15">
           <img src="assets/logo.png" alt="ロゴ" />
           <div class="brand-title">
               <span>春日井ハンドボールスクール U-15</span>
             <strong>KASUGAI HANDBALL SCHOOL U-15</strong>
           </div>
-        </a>
+      </div>
         <nav class="nav">
+          <a data-nav href="index.html">TOP</a>
           <a data-nav href="policy.html">チーム方針</a>
           <a data-nav href="news.html">活動情報</a>
           <a data-nav href="staff.html">スタッフ</a>
@@ -50,6 +51,14 @@
   </main>
 
   <footer class="footer"><div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div></footer>
-  <script type="module">import "./assets/main.js"; document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script>
+      // ナビの current 表示（main.js の代替）
+      const path = location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+          if(a.getAttribute("href") === path){
+              a.setAttribute("aria-current","page");
+          }
+      });
+  </script>
 </body>
 </html>

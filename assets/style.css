@@ -25,7 +25,7 @@ a:hover{ text-decoration:underline; }
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand img{ width:36px; height:36px; }
+.brand img{ width:45px; height:45px; }
 .brand-title{ display:flex; flex-direction:column; line-height:1.2; }
 .brand-title strong{
   font-size: 30px;
@@ -49,7 +49,7 @@ a:hover{ text-decoration:underline; }
         border:1px solid transparent;
         color:var(--muted); }
 
-.nav a[aria-current="page"]{ color:var(--text); border-color:var(--line); background:rgba(18,27,47,0.6); }
+.nav a[aria-current="page"]{ color:var(--text); border-color:var(--line); background:#87cefa; }
 
 .hero{ padding:44px 0 22px; }
 .hero h1{ margin:0 0 10px; font-size:34px; letter-spacing:0.3px; }
@@ -302,3 +302,6 @@ a:hover{ text-decoration:underline; }
     row-gap: 6px;
   }
 }
+
+
+.brand{ cursor: default; }
