@@ -1,14 +1,15 @@
 :root{
-  /* base */
-  --bg:#ffc0cb;          /* 背景：白 */
-  --card:#4169e1;      /* カード：薄いグレー */
-  --text:#0b1220;        /* 文字：濃い黒 */
-  --muted:#4682b4;       /* 補助文字：グレー */
-  --line:#dc143c;        /* 枠線：薄いグレー */
+  --bg:#f8f8ff;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#393f4c;
+  --line:#e6e8ef;
 
-  /* accents */
-  --accent:#2563eb;      /* 青（メインアクセント） */
-  --accent2:#20b2aa;     /* 赤（サブアクセント） */
+  --accent:#2563eb;   /* blue */
+  --accent2:#ef4444;  /* red */
+
+  --soft:#f6f7fb;     /* 薄い背景 */
+  --shadow: 0 8px 24px rgba(10, 20, 40, 0.08);
 }
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",Arial,sans-serif; background:var(--bg); color:var(--text); }
@@ -18,7 +19,7 @@ a:hover{ text-decoration:underline; }
 
 .header{
   position:sticky; top:0; z-index:10;
-  background:rgba(255,255,255,0.85);
+  background:rgba(10,160,255,0.3);
   backdrop-filter: blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -26,11 +27,26 @@ a:hover{ text-decoration:underline; }
 .brand{ display:flex; align-items:center; gap:12px; }
 .brand img{ width:36px; height:36px; }
 .brand-title{ display:flex; flex-direction:column; line-height:1.2; }
-.brand-title strong{ font-size:16px; }
-.brand-title span{ font-size:12px; color:var(--muted); }
+.brand-title strong{
+  font-size: 30px;
+  font-family: "Impact", "Impact", system-ui, -apple-system, sans-serif;
+  font-weight: 70; /* 太さもここで */
+  letter-spacing: 0.1px; /* 任意：少し締まる */
+}
+.brand-title span{
+  font-size: 11px;           /* 小さめに */
+  font-family: "Klee", system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.01em;    /* 英字は間隔を少し開けると綺麗 */
+  text-transform: uppercase; /* 任意：大文字統一したい時 */
+}
 
 .nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
-.nav a{ padding:8px 10px; border-radius:10px; border:1px solid transparent; color:var(--muted); }
+.nav a{ padding:8px 10px;
+        font-family: "Toppan Bunkyu Midashi Gothic", system-ui, -apple-system, sans-serif;
+        border-radius:10px;
+        border:1px solid transparent;
+        color:var(--muted); }
+
 .nav a[aria-current="page"]{ color:var(--text); border-color:var(--line); background:rgba(18,27,47,0.6); }
 
 .hero{ padding:44px 0 22px; }
@@ -43,8 +59,20 @@ a:hover{ text-decoration:underline; }
   padding:10px 14px; border-radius:12px; border:1px solid var(--line);
   background:rgba(18,27,47,0.8); color:var(--text);
 }
-.btn.primary{ border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#07111f; font-weight:700; }
-.btn:hover{ filter:brightness(1.06); text-decoration:none; }
+
+.btn.primary{
+  border-color:transparent;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+}
+
+.btn{
+    border-color:transparent;
+    background:var(--accent2);
+    color:#fff;
+    font-weight:700;
+  }
 
 .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; padding:18px 0 40px; }
 .card{
@@ -53,6 +81,7 @@ a:hover{ text-decoration:underline; }
   background:var(--card);
   border-radius:16px;
   padding:16px;
+  box-shadow: var(--shadow);
 }
 .card h2{ margin:0 0 8px; font-size:18px; }
 .card p{ margin:0; color:var(--muted); line-height:1.75; }
@@ -77,9 +106,10 @@ a:hover{ text-decoration:underline; }
 
 .item{
   border:1px solid var(--line);
-  background:#ffffff;
+  background:#fff;
   border-radius:14px;
   padding:12px 12px;
+  box-shadow: 0 6px 18px rgba(10, 20, 40, 0.06);
 }
 .item .meta{ color:var(--muted); font-size:12px; margin-bottom:6px; }
 .item .title{ font-weight:700; margin-bottom:6px; }
@@ -115,8 +145,97 @@ a:hover{ text-decoration:underline; }
 
 .hero-media img{
   width:100%;
-  height: clamp(220px, 32vw, 420px);
+  height: clamp(220px, 32vw, 450px);
   object-fit: cover;
   display:block;
 }
 
+.card h2{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.card h2::before{
+  content:"";
+  width:10px; height:10px;
+  border-radius:3px;
+  background: var(--accent);
+}
+
+/* 特定カードだけ赤にしたい時（IDを使う） */
+#pickupCard h2::before{ background: var(--accent2); }
+#nextCard h2::before{ background: var(--accent); }
+
+
+/* Hero Slider (横スライド + 下部バー) */
+.hero-slider{
+  position: relative;
+  width: 100%;
+  margin: 0 0 18px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--shadow, 0 8px 24px rgba(10, 20, 40, 0.08));
+}
+
+/* 横に流す“レール” */
+.hero-slides{
+  display: flex;
+  width: 100%;
+  height: clamp(220px, 32vw, 450px); /* ←高さ調整はここ */
+  transform: translateX(0);
+  transition: transform 520ms ease;
+  will-change: transform;
+}
+
+/* 1枚＝画面幅いっぱい */
+.hero-slides img{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 以前のフェード用クラスが残ってても問題ないように */
+.hero-slides img{ opacity: 1 !important; transform:none !important; }
+
+/* 左右ボタンは使わない（HTMLに残ってても非表示） */
+.hero-nav{ display:none; }
+
+/* 下部ナビ（横長バー） */
+.hero-dots{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12px;
+}
+
+/* 横長の棒 */
+.hero-dot{
+  width: 38px;
+  height: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+/* 選択中は白く */
+.hero-dot.is-active{
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(255,255,255,0.75);
+}
+
+#newsTall .list{
+  max-height: 540px;
+  overflow: auto;
+  padding-right: 6px;
+}
