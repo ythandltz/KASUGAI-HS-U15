@@ -245,3 +245,34 @@ a:hover{ text-decoration:underline; }
     grid-row: span 2;
   }
 }
+
+/* スマホ表示だけ文字を小さくする */
+@media (max-width: 480px){
+  /* トップの見出し */
+  .hero h1{
+    font-size: 24px;   /* ← ここで調整 */
+    line-height: 1.25;
+  }
+
+  /* トップの説明文 */
+  .hero p{
+    font-size: 13px;   /* ← ここで調整 */
+    line-height: 1.7;
+  }
+
+  /* ボタン */
+  .btn{
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  /* バッジ */
+  .badge{
+    font-size: 11px;
+    padding: 5px 9px;
+  }
+
+  /* ヘッダーのチーム名（日本語/英字） */
+  .brand-title span{ font-size: 12px; }
+  .brand-title strong{ font-size: 12px; }
+}
