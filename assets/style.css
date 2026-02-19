@@ -240,7 +240,7 @@ a:hover{ text-decoration:underline; }
   padding-right: 6px;
 }
 /* 右：ニュースを“2カード分”の高さにする（PC表示だけ） */
-@media (min-width:640px){
+@media (min-width:300px){
   .newsTall{
     grid-row: span 2;
   }
