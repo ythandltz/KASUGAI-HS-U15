@@ -42,8 +42,8 @@ a:hover{ text-decoration:underline; }
 
 .nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
 .nav a{ 
-        font-size: 18px;
-        padding:8px 10px;
+        font-size: 13px;
+        padding:8px 7px;
         font-family: "Toppan Bunkyu Midashi Gothic", system-ui, -apple-system, sans-serif;
         border-radius:10px;
         border:1px solid transparent;
