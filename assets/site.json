@@ -1,0 +1,16 @@
+{
+  "nextActivity": {
+    "date": "2026-02-23",
+    "time": "18:30-20:30",
+    "place": "（会場名）",
+    "note": "体験参加OK（要事前連絡）"
+  },
+  "pickup": {
+    "title": "体験参加受付中",
+    "body": "初心者・経験者どちらも歓迎です。まずはメールでご連絡ください。",
+    "primaryText": "募集ページへ",
+    "primaryHref": "recruit.html",
+    "secondaryText": "お問い合わせ",
+    "secondaryHref": "contact.html"
+  }
+}
