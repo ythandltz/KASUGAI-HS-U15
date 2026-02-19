@@ -92,9 +92,7 @@
     <div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div>
   </footer>
 
-  <script type="module" src="assets/main.js">
-
-    
+  <script type="module">
       // --- Hero slider (横スライド + 下部バー) ---
       (function initHeroSlider(){
         const root = document.getElementById("heroSlider");
@@ -184,6 +182,14 @@
       })();
       
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // ナビの current 表示（main.js の代替）
+    const path = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll('a[data-nav]').forEach(a=>{
+      if(a.getAttribute("href") === path){
+        a.setAttribute("aria-current","page");
+      }
+    });
     
     const res = await fetch("assets/news.json");
     const items = await res.json();
