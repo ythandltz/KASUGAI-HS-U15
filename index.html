@@ -46,6 +46,24 @@
     </section>
 
     <section class="grid">
+<div class="card cols-6" id="nextCard">
+  <h2>NEXT ACTIVITY</h2>
+  <p id="nextText">読み込み中...</p>
+  <div class="cta" style="margin-top:12px">
+    <a class="btn primary" href="recruit.html">体験参加・入会案内</a>
+    <a class="btn" href="contact.html">お問い合わせ</a>
+  </div>
+</div>
+
+<div class="card cols-6" id="pickupCard">
+  <h2>PICK UP</h2>
+  <p id="pickupText">読み込み中...</p>
+  <div class="cta" style="margin-top:12px">
+    <a class="btn primary" id="pickupPrimary" href="#">-</a>
+    <a class="btn" id="pickupSecondary" href="#">-</a>
+  </div>
+</div>
+      
       <div class="card cols-6">
         <h2>クラブ方針</h2>
         <p>安全最優先。段階的な育成と成功体験の積み重ねを重視します。</p>
@@ -80,6 +98,22 @@
     import "./assets/main.js";
     document.getElementById("y").textContent = new Date().getFullYear();
 
+const siteRes = await fetch("assets/site.json");
+const site = await siteRes.json();
+
+// NEXT ACTIVITY
+const a = site.nextActivity;
+document.getElementById("nextText").innerHTML =
+  `<strong>${a.date} ${a.time}</strong><br/>${a.place}<br/><span style="color:var(--muted)">${a.note}</span>`;
+
+// PICK UP
+const p = site.pickup;
+document.getElementById("pickupText").textContent = p.body;
+const b1 = document.getElementById("pickupPrimary");
+b1.textContent = p.primaryText; b1.href = p.primaryHref;
+const b2 = document.getElementById("pickupSecondary");
+b2.textContent = p.secondaryText; b2.href = p.secondaryHref;
+    
     const res = await fetch("assets/news.json");
     const items = await res.json();
     const list = document.getElementById("newsList");
