@@ -1,4 +1,4 @@
-// 現在ページのnavをハイライト（aria-current付与）
+// nav current（共通）
 const file = location.pathname.split("/").pop();
 const current = (file === "" ? "index.html" : file);
 
