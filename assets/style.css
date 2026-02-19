@@ -274,7 +274,7 @@ a:hover{ text-decoration:underline; }
 
   /* ヘッダーのチーム名（日本語/英字） */
   .brand-title span{ font-size: 9px; }
-  .brand-title strong{ font-size: 16px; }
+  .brand-title strong{ font-size: 23px; }
 }
 /* スマホだけ：ロゴ/タイトルの下にナビを配置 */
 @media (max-width: 640px){
@@ -289,8 +289,9 @@ a:hover{ text-decoration:underline; }
     justify-content: flex-start; /* 左寄せ */
   }
 
-  .nav a{
-    padding: 8px 10px;
+   .nav a{
+    font-size: 12px;     /* ←ここを好みで 11〜13px */
+    padding: 6px 8px;    /* ←ついでに小さめに（任意） */
   }
 }
 @media (max-width: 640px){
