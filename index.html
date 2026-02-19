@@ -180,15 +180,6 @@
         render();
         if(!reduced && imgs.length > 1) start();
       })();
-
-    // ナビの current 表示（main.js の代替：確実版）
-const file = location.pathname.split("/").pop();
-const path = (file === "" ? "index.html" : file);
-
-document.querySelectorAll("a[data-nav]").forEach(a => {
-  if (a.getAttribute("href") === path) a.setAttribute("aria-current", "page");
-  else a.removeAttribute("aria-current");
-});
       
     document.getElementById("y").textContent = new Date().getFullYear();
 
@@ -207,5 +198,6 @@ document.querySelectorAll("a[data-nav]").forEach(a => {
       list.appendChild(li);
     });
   </script>
+  <script type="module" src="assets/main.js"></script>
 </body>
 </html>
