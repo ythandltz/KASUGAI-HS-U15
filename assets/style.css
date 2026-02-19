@@ -18,7 +18,8 @@ a:hover{ text-decoration:underline; }
 
 .header{
   position:sticky; top:0; z-index:10;
-  background:rgba(11,18,32,0.85); backdrop-filter: blur(10px);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
   border-bottom:1px solid var(--line);
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
@@ -49,7 +50,7 @@ a:hover{ text-decoration:underline; }
 .card{
   grid-column: span 12;
   border:1px solid var(--line);
-  background:rgba(18,27,47,0.72);
+  background:var(--card);
   border-radius:16px;
   padding:16px;
 }
@@ -73,9 +74,10 @@ a:hover{ text-decoration:underline; }
 }
 
 .list{ margin:10px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+
 .item{
   border:1px solid var(--line);
-  background:rgba(18,27,47,0.55);
+  background:#ffffff;
   border-radius:14px;
   padding:12px 12px;
 }
