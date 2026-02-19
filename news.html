@@ -46,6 +46,7 @@
 
   <footer class="footer"><div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div></footer>
 
+  <script type="module" src="assets/main.js"></script>
   <script type="module">
   async function loadNews(){
     const res = await fetch("assets/news.json");
@@ -77,6 +78,5 @@
     if(ul) ul.innerHTML = `<li class="item"><div class="title">読み込みに失敗しました</div><div class="body">${err.message}</div></li>`;
   });
 </script>
-  <script type="module" src="assets/main.js"></script>
 </body>
 </html>
