@@ -235,7 +235,7 @@ a:hover{ text-decoration:underline; }
 }
 
 #newsTall .list{
-  max-height: 30px;
+  max-height: 300px;
   overflow: auto;
   padding-right: 6px;
 }
