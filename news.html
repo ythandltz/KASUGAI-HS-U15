@@ -49,33 +49,34 @@
   <script type="module" src="assets/main.js"></script>
   <script type="module">
   async function loadNews(){
-    const res = await fetch("assets/news.json");
+    const res = await fetch("assets/news.json"); // ← ここ重要（assets/）
     if(!res.ok) throw new Error("news.json fetch failed: " + res.status);
-    const items = await res.json();
 
-    // 日付の新しい順（JSONの並び順を気にしなくてOK）
+    const items = await res.json();
     items.sort((a,b)=> String(b.date).localeCompare(String(a.date)));
 
     const ul = document.getElementById("newsAll");
-    if(!ul) return;
+    if(!ul) throw new Error("#newsAll が見つかりません（id違いの可能性）");
 
     ul.innerHTML = "";
-    items.forEach(n=>{
+    for(const n of items){
       const li = document.createElement("li");
       li.className = "item";
       li.innerHTML = `
-        <div class="meta">${n.date || ""}</div>
-        <div class="title">${n.title || ""}</div>
-        <div class="body">${(n.body || "").replaceAll("<","&lt;").replaceAll(">","&gt;")}</div>
+        <div class="meta">${n.date ?? ""}</div>
+        <div class="title">${n.title ?? ""}</div>
+        <div class="body">${(n.body ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")}</div>
       `;
       ul.appendChild(li);
-    });
+    }
   }
 
   loadNews().catch(err=>{
     console.error(err);
     const ul = document.getElementById("newsAll");
-    if(ul) ul.innerHTML = `<li class="item"><div class="title">読み込みに失敗しました</div><div class="body">${err.message}</div></li>`;
+    if(ul){
+      ul.innerHTML = `<li class="item"><div class="title">読み込みに失敗しました</div><div class="body">${err.message}</div></li>`;
+    }
   });
 </script>
 </body>
