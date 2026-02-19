@@ -290,7 +290,7 @@ a:hover{ text-decoration:underline; }
   }
 
    .nav a{
-    font-size: 15px;     /* ←ここを好みで 11〜13px */
+    font-size: 13px;     /* ←ここを好みで 11〜13px */
     padding: 6px 3px;    /* ←ついでに小さめに（任意） */
   }
 }
