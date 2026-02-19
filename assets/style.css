@@ -1,14 +1,14 @@
 :root{
   /* base */
-  --bg:#b0c4de;          /* 背景：白 */
+  --bg:#ffc0cb;          /* 背景：白 */
   --card:#4169e1;      /* カード：薄いグレー */
   --text:#0b1220;        /* 文字：濃い黒 */
-  --muted:#f0f8ff;       /* 補助文字：グレー */
+  --muted:#4682b4;       /* 補助文字：グレー */
   --line:#dc143c;        /* 枠線：薄いグレー */
 
   /* accents */
   --accent:#2563eb;      /* 青（メインアクセント） */
-  --accent2:#ef4444;     /* 赤（サブアクセント） */
+  --accent2:#20b2aa;     /* 赤（サブアクセント） */
 }
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",Arial,sans-serif; background:var(--bg); color:var(--text); }
