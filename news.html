@@ -46,6 +46,37 @@
 
   <footer class="footer"><div class="container">© <span id="y"></span> 春日井ハンドボールスクール U-15</div></footer>
 
+  <script type="module">
+  async function loadNews(){
+    const res = await fetch("assets/news.json");
+    if(!res.ok) throw new Error("news.json fetch failed: " + res.status);
+    const items = await res.json();
+
+    // 日付の新しい順（JSONの並び順を気にしなくてOK）
+    items.sort((a,b)=> String(b.date).localeCompare(String(a.date)));
+
+    const ul = document.getElementById("newsAll");
+    if(!ul) return;
+
+    ul.innerHTML = "";
+    items.forEach(n=>{
+      const li = document.createElement("li");
+      li.className = "item";
+      li.innerHTML = `
+        <div class="meta">${n.date || ""}</div>
+        <div class="title">${n.title || ""}</div>
+        <div class="body">${(n.body || "").replaceAll("<","&lt;").replaceAll(">","&gt;")}</div>
+      `;
+      ul.appendChild(li);
+    });
+  }
+
+  loadNews().catch(err=>{
+    console.error(err);
+    const ul = document.getElementById("newsAll");
+    if(ul) ul.innerHTML = `<li class="item"><div class="title">読み込みに失敗しました</div><div class="body">${err.message}</div></li>`;
+  });
+</script>
   <script type="module" src="assets/main.js"></script>
 </body>
 </html>
