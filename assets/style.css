@@ -292,8 +292,8 @@ a:hover{ text-decoration:underline; }
   }
 
    .nav a{
-    font-size: 11px;     /* ←ここを好みで 11〜13px */
-    padding: 6px 5px;    /* ←ついでに小さめに（任意） */
+    font-size: 10px;     /* ←ここを好みで 11〜13px */
+    padding: 6px 4px;    /* ←ついでに小さめに（任意） */
   }
 }
 @media (max-width: 640px){
