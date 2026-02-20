@@ -4,48 +4,108 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NEWS 追加（関係者用）</title>
+
+  <!-- 既存サイトのCSSを使う（ボタン等の見た目を揃える） -->
   <link rel="stylesheet" href="assets/style.css" />
+
+  <style>
+    /* このページだけの微調整（押せない事故を避ける） */
+    .form-row { margin: 12px 0 16px; }
+    .form-row label { display:block; font-weight:700; margin: 0 0 8px; }
+    .input, .textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--text);
+    }
+    .textarea { min-height: 160px; resize: vertical; }
+
+    /* クリック不能対策（最優先） */
+    button, .btn { pointer-events: auto !important; cursor: pointer !important; }
+  </style>
 </head>
+
 <body>
+  <!-- 既存サイトと揃えるならヘッダーを入れてもOK（必要ならコピペしてください） -->
   <main class="container" style="padding:24px 0 60px;">
     <div class="card">
       <h2>NEWS追加（関係者用）</h2>
-      <p style="color:var(--muted);margin:8px 0 16px;">
-        送信すると <code>assets/news.json</code> に追記され、Netlifyが自動更新します（反映まで少し時間がかかります）。
+
+      <p style="color:var(--muted);margin:8px 0 14px;line-height:1.7;">
+        送信すると <code>assets/news.json</code> に追記され、GitHub → Netlify が自動更新します。<br>
+        反映まで少し時間がかかります。送信結果は <b>新規タブ</b>に表示されます。
       </p>
 
-      <!-- ★ action をあなたの /exec に置き換え -->
-      <form method="POST"
-      action="https://script.google.com/macros/s/AKfycbx97B4XT3zK9yJy11FIMwKnsqfJaiFL6IcXukaHv4bFun1hazwZVExsbmdmVESlVlvd7Q/exec"
-      target="_blank">
-  <label>日付（YYYY/MM/DD）</label><br />
-  <input name="date" id="date"
-         style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+      <div class="kv" style="margin:12px 0 0;">
+        <span class="badge">認証なし（URLを知っている人向け）</span>
+        <span class="badge">日付形式: YYYY/MM/DD</span>
+      </div>
 
-  <label>タイトル</label><br />
-  <input name="title"
-         style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+      <hr style="border:none;border-top:1px solid var(--line);margin:16px 0;">
 
-  <label>本文</label><br />
-  <textarea name="body" rows="7"
-            style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;"></textarea><br /><br />
+      <!-- ★ action をあなたの /exec に置き換える -->
+      <form id="newsForm" method="POST" target="_blank">
+        <div class="form-row">
+          <label for="date">日付（YYYY/MM/DD）</label>
+          <input class="input" name="date" id="date" autocomplete="off" />
+        </div>
 
-  <button class="btn primary" type="submit" style="cursor:pointer; pointer-events:auto;">
-    追加する
-  </button>
-</form>
+        <div class="form-row">
+          <label for="title">タイトル</label>
+          <input class="input" name="title" id="title" placeholder="例）HPを更新" />
+        </div>
 
-      <p style="margin-top:12px;color:var(--muted);">
-        送信結果は下に表示されます：
-      </p>
-      <iframe name="postResult" style="width:100%;height:120px;border:1px solid var(--line);border-radius:12px;background:#fff;"></iframe>
+        <div class="form-row">
+          <label for="body">本文</label>
+          <textarea class="textarea" name="body" id="body" placeholder="例）改善・改修を加えました。"></textarea>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button class="btn primary" type="submit">追加する（新規タブで結果表示）</button>
+          <button class="btn" type="button" id="clearBtn">クリア</button>
+        </div>
+
+        <p id="hint" style="margin:12px 0 0;color:var(--muted);">
+          ※ 送信後、新規タブに <code>{"ok":true,...}</code> が出れば成功です。
+        </p>
+      </form>
     </div>
   </main>
 
   <script>
-    const pad = (n)=> String(n).padStart(2,"0");
+    // ★ここをあなたの Apps Script WebアプリURL(/exec) に置き換え
+    const ACTION_URL = "https://script.google.com/macros/s/AKfycbx97B4XT3zK9yJy11FIMwKnsqfJaiFL6IcXukaHv4bFun1hazwZVExsbmdmVESlVlvd7Q/exec";
+
+    // 今日の日付を YYYY/MM/DD で自動入力
+    const pad = (n) => String(n).padStart(2, "0");
     const d = new Date();
     document.getElementById("date").value = `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`;
+
+    // action をセット（HTMLに直書きしない＝ミス減らす）
+    const form = document.getElementById("newsForm");
+    form.action = ACTION_URL;
+
+    // クリアボタン
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      document.getElementById("title").value = "";
+      document.getElementById("body").value = "";
+      document.getElementById("title").focus();
+    });
+
+    // 送信前チェック（最低限）
+    form.addEventListener("submit", (e) => {
+      const title = document.getElementById("title").value.trim();
+      const body  = document.getElementById("body").value.trim();
+      if (!title && !body) {
+        e.preventDefault();
+        alert("タイトルまたは本文を入力してください。");
+        return;
+      }
+      // 送信は新規タブで開くので、ここでは成功/失敗判定しない
+    });
   </script>
 </body>
 </html>
