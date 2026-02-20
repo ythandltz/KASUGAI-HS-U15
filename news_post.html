@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEWS 追加（関係者用）</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main class="container" style="padding:24px 0 60px;">
+    <div class="card">
+      <h2>NEWS追加（関係者用）</h2>
+
+      <p style="color:var(--muted);margin:8px 0 16px;">
+        送信すると <code>assets/news.json</code> に追記され、Netlifyが自動更新します（反映まで少し時間がかかります）。
+      </p>
+
+      <label>日付（YYYY/MM/DD）</label><br />
+      <input id="date" placeholder="2026/02/20"
+        style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+
+      <label>タイトル</label><br />
+      <input id="title"
+        style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+
+      <label>本文</label><br />
+      <textarea id="body" rows="7"
+        style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;"></textarea><br /><br />
+
+      <button class="btn primary" id="send">追加する</button>
+      <span id="msg" style="margin-left:12px;color:var(--muted);"></span>
+    </div>
+  </main>
+
+  <script type="module">
+    // ★後で Apps Script の WebアプリURL（exec）に置き換えます
+    const ENDPOINT = "YOUR_APPS_SCRIPT_WEBAPP_EXEC_URL";
+
+    // 今日をデフォルト表示
+    const pad = (n)=> String(n).padStart(2,"0");
+    const d = new Date();
+    document.getElementById("date").value = `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`;
+
+    document.getElementById("send").addEventListener("click", async () => {
+      const msg = document.getElementById("msg");
+      const payload = {
+        date: document.getElementById("date").value.trim(),
+        title: document.getElementById("title").value.trim(),
+        body: document.getElementById("body").value.trim(),
+      };
+
+      if (!payload.title && !payload.body) {
+        msg.textContent = "タイトルか本文を入力してください。";
+        return;
+      }
+
+      msg.textContent = "送信中...";
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(()=> ({}));
+
+        if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+
+        msg.textContent = "追加しました！反映まで少し待ってください。";
+        document.getElementById("title").value = "";
+        document.getElementById("body").value = "";
+      } catch (e) {
+        msg.textContent = "失敗: " + e.message;
+      }
+    });
+  </script>
+</body>
+</html>
