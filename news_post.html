@@ -15,18 +15,25 @@
       </p>
 
       <!-- ★ action をあなたの /exec に置き換え -->
-      <form method="POST" action="https://script.google.com/macros/s/AKfycbx97B4XT3zK9yJy11FIMwKnsqfJaiFL6IcXukaHv4bFun1hazwZVExsbmdmVESlVlvd7Q/exec" target="postResult">
-        <label>日付（YYYY/MM/DD）</label><br />
-        <input name="date" id="date" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+      <form method="POST"
+      action="https://script.google.com/macros/s/AKfycbx97B4XT3zK9yJy11FIMwKnsqfJaiFL6IcXukaHv4bFun1hazwZVExsbmdmVESlVlvd7Q/exec"
+      target="_blank">
+  <label>日付（YYYY/MM/DD）</label><br />
+  <input name="date" id="date"
+         style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
 
-        <label>タイトル</label><br />
-        <input name="title" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
+  <label>タイトル</label><br />
+  <input name="title"
+         style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;" /><br /><br />
 
-        <label>本文</label><br />
-        <textarea name="body" rows="7" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;"></textarea><br /><br />
+  <label>本文</label><br />
+  <textarea name="body" rows="7"
+            style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;"></textarea><br /><br />
 
-        <button class="btn primary" type="submit">追加する</button>
-      </form>
+  <button class="btn primary" type="submit" style="cursor:pointer; pointer-events:auto;">
+    追加する
+  </button>
+</form>
 
       <p style="margin-top:12px;color:var(--muted);">
         送信結果は下に表示されます：
