@@ -258,7 +258,7 @@ a:hover{ text-decoration:underline; }
 
   /* トップの説明文 */
   .hero p{
-    font-size: 13px;   /* ← ここで調整 */
+    font-size: 12px;   /* ← ここで調整 */
     line-height: 1.7;
   }
 
