@@ -46,11 +46,11 @@
   <script type="module" src="assets/main.js"></script>
   <script type="module">
   async function loadNews(){
-    const res = await fetch("assets/news.json"); // ← ここ重要（assets/）
-    if(!res.ok) throw new Error("news.json fetch failed: " + res.status);
+    const NEWS_API = "https://script.google.com/macros/s/AKfycbzjeY7M_9qhRYtT1IIodIIhRHHbqWQ1MtEikB1N5pAsE0RwLnRhpxUSQfFBRbQthY9n/exec";
 
-    const items = await res.json();
-    items.sort((a,b)=> String(b.date).localeCompare(String(a.date)));
+const res = await fetch(NEWS_API);
+const data = await res.json();
+const items = data.items || [];
 
     const ul = document.getElementById("newsAll");
     if(!ul) throw new Error("#newsAll が見つかりません（id違いの可能性）");
