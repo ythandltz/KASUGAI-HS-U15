@@ -185,8 +185,12 @@
     document.getElementById("y").textContent = new Date().getFullYear();
 
     
-    const res = await fetch("assets/news.json");
-    const items = await res.json();
+    const NEWS_API = "https://script.google.com/macros/s/AKfycbzjeY7M_9qhRYtT1IIodIIhRHHbqWQ1MtEikB1N5pAsE0RwLnRhpxUSQfFBRbQthY9n/exec";
+
+const res = await fetch(NEWS_API);
+const data = await res.json();
+const items = data.items || [];
+    
     const list = document.getElementById("newsList");
     items.slice(0,4).forEach(n=>{
       const li = document.createElement("li");
