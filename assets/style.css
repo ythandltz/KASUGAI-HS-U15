@@ -241,6 +241,28 @@ a:hover{ text-decoration:underline; }
   overflow: auto;
   padding-right: 6px;
 }
+
+.ig-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+
+.ig-link img{
+  width:26px;
+  height:26px;
+  display:block;
+}
+
+.ig-link:hover{
+  filter:brightness(1.05);
+}
+
 /* 右：ニュースを“2カード分”の高さにする（PC表示だけ） */
 @media (min-width:300px){
   .newsTall{
