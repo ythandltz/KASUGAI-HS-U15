@@ -62,7 +62,7 @@
       li.innerHTML = `
         <div class="meta">${n.date ?? ""}</div>
         <div class="title">${n.title ?? ""}</div>
-        <div class="body">${(n.body ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")}</div>
+        <div class="body">${(n.body ?? "")}</div>
       `;
       ul.appendChild(li);
     }
