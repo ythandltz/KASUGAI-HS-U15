@@ -329,7 +329,7 @@ a:hover{ text-decoration:underline; }
 .brand{ cursor: default; }
 
 .hero-video{
-  width: 90%;
+  width: 80%;
   margin: 0 auto 18px;
   border-radius: 16px;
   overflow: hidden;
@@ -340,7 +340,7 @@ a:hover{ text-decoration:underline; }
 
 .hero-video video{
   width: 100%;
-  height: clamp(200px, 28vw, 480px); /* ←高さ調整はここ */
+  height: clamp(200px, 28vw, 360px); /* ←高さ調整はここ */
   object-fit: cover;
   display: block;
 }
