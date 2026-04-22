@@ -340,7 +340,7 @@ a:hover{ text-decoration:underline; }
 
 .hero-video video{
   width: 100%;
-  height: clamp(200px, 28vw, 360px); /* ←高さ調整はここ */
+  height: clamp(200px, 28vw, 320px); /* ←高さ調整はここ */
   object-fit: cover;
   display: block;
 }
