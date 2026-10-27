@@ -35,7 +35,7 @@
         <img src="assets/top00.png" alt="春日井ハンドボールスクール U-15" style="display: block; width: 100%; height: auto;" />
       </div>
       
-        <div class="hero-slider" id="heroSlider" aria-label="トップ画像スライダー">
+        <div class="hero-slider" id="heroSlider" aria-label="トップ画像スライダー" hidden>
           <div class="hero-slides">
             <!-- ここに画像を追加 -->
             <img src="assets/top1.jpg" alt="春日井ハンドボールスクール U-15" class="is-active" />
@@ -107,7 +107,7 @@
       // --- Hero slider (横スライド + 下部バー) ---
       (function initHeroSlider(){
         const root = document.getElementById("heroSlider");
-        if(!root) return;
+        if(!root || root.hidden) return;
 
         const rail = root.querySelector(".hero-slides");
         const imgs = Array.from(root.querySelectorAll(".hero-slides img"));
