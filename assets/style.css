@@ -1,348 +1,128 @@
+/* KASUGAI / PLAYFUL SPORT — independent visual proposal */
 :root{
-  --bg:#f8f8ff;
-  --card:#ffffff;
-  --text:#0b1220;
-  --muted:#393f4c;
-  --line:#e6e8ef;
-
-  --accent:#2563eb;   /* blue */
-  --accent2:#ef4444;  /* red */
-
-  --soft:#f6f7fb;     /* 薄い背景 */
-  --shadow: 0 8px 24px rgba(10, 20, 40, 0.08);
+ --bg:#f9f8f0;--card:#fff;--text:#191a21;--muted:#383943;--line:#191a21;
+ --accent:#dfff53;--accent2:#bca7ff;--soft:#e4f5ed;--shadow:6px 6px 0 #191a21;
+ --lavender:#bca7ff;--mint:#dff4e9;--coral:#ff957c;
 }
-*{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",Arial,sans-serif; background:var(--bg); color:var(--text); }
-a{ color:inherit; text-decoration:none; }
-a:hover{ text-decoration:underline; }
-.container{ width:min(1040px, 92vw); margin:0 auto; }
-
-.header{
-  position:sticky; top:0; z-index:10;
-  background:rgba(10,160,255,0.3);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:170px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.9;-webkit-font-smoothing:antialiased}
+img{max-width:100%;vertical-align:middle}
+a{color:inherit;text-decoration:none;text-underline-offset:4px}
+a:hover{text-decoration:underline}
+button,input,textarea{font:inherit}
+a,button{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #4b34bd;outline-offset:6px}
+[hidden]{display:none!important}
+.container{width:min(1200px,calc(100% - 96px));margin-inline:auto}
+.header{position:sticky;top:0;z-index:20;background:var(--lavender);border-bottom:2px solid var(--text)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:22px;min-height:100px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{width:52px;height:52px;object-fit:contain;flex-shrink:0;background:#fff;border:2px solid var(--text);border-radius:50%;padding:5px;transform:rotate(-6deg)}
+.brand-title{display:flex;flex-direction:column;gap:4px;line-height:1.35}
+.brand-title span{font-size:10px;font-weight:700;letter-spacing:.04em}
+.brand-title strong{font-size:17px;font-weight:900;letter-spacing:-.04em}
+.nav{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.nav a{font-size:11px;font-weight:800;border:2px solid transparent;padding:8px 9px;line-height:1.5;border-radius:999px;white-space:nowrap;transition:background .15s,transform .15s}
+.nav a:hover{text-decoration:none;background:#ffffff77;transform:translateY(-2px)}
+.nav a[aria-current="page"]{background:var(--text);color:#fff}
+.nav a:last-child{border-color:var(--text);background:var(--accent);color:var(--text);box-shadow:2px 2px 0 var(--text)}
+.nav a:last-child[aria-current="page"]{background:var(--text);color:var(--accent)}
+.hero{padding:64px 0 42px;position:relative}
+.hero h1{margin:0 0 22px;font-size:clamp(36px,4.5vw,64px);line-height:1.35;font-weight:900;letter-spacing:-.035em;overflow-wrap:anywhere}
+.hero h1::before{content:"";display:block;width:46px;height:12px;background:var(--lavender);border:2px solid var(--text);border-radius:20px;margin-bottom:26px;transform:rotate(-7deg)}
+.hero p{max-width:850px;margin:0;color:var(--muted);font-size:14px;line-height:2}
+.hero p a{text-decoration:underline;text-decoration-thickness:2px}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.hero .cta{margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:54px;border:2px solid var(--text);border-radius:999px;padding:13px 24px;background:#fff;color:var(--text);box-shadow:4px 4px 0 var(--text);font-size:13px;font-weight:800;line-height:1.7;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s}
+.btn::after{content:"↗";font-family:Arial,sans-serif;font-size:21px;font-weight:700}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--text);background:var(--accent);text-decoration:none}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--text)}
+.btn.primary{background:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;padding:24px 0 88px}
+.card{grid-column:span 12;min-width:0;padding:34px;background:var(--card);border:2px solid var(--text);border-radius:24px;box-shadow:var(--shadow)}
+.card:nth-child(4n+2){background:#f0eaff}
+.card:nth-child(4n+3){background:var(--mint)}
+.card h2{display:flex;align-items:center;gap:12px;margin:0 0 22px;font-size:24px;font-weight:900;line-height:1.5;letter-spacing:-.025em}
+.card h2::before{content:"";width:15px;height:15px;flex-shrink:0;background:var(--coral);border:2px solid var(--text);border-radius:3px;transform:rotate(-12deg)}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:2;overflow-wrap:anywhere}
+.card .cta{margin-top:25px!important}
+.cols-6{grid-column:span 6}.cols-4{grid-column:span 4}.cols-8{grid-column:span 8}.cols-12{grid-column:span 12}
+.kv{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.badge{font-size:11px;font-weight:700;border:1.5px solid var(--text);border-radius:999px;background:#fff;padding:5px 12px;color:var(--text)}
+.badge:nth-child(2){background:var(--lavender);transform:rotate(-3deg)}
+.badge:nth-child(3){background:var(--coral);transform:rotate(2deg)}
+.list{list-style:none;margin:0;padding:0}
+.item{background:#fff;border-bottom:2px dashed #c7c2d0;padding:24px 0;overflow-wrap:anywhere}
+.item:first-child{padding-top:0}.item:last-child{padding-bottom:0;border-bottom:0}
+.item .meta{display:inline-block;margin-bottom:10px;font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--accent);padding:2px 10px;border:1px solid var(--text);border-radius:5px}
+.item .title{font-size:15px;font-weight:800;line-height:1.75;margin-bottom:10px}
+.item .body{font-size:13px;line-height:1.95;color:var(--muted);white-space:pre-wrap}
+.item .body .btn{font-size:12px;padding:10px 16px;white-space:normal}
+.item .body img{width:auto;height:auto;max-height:36px}
+#newsTall .list{max-height:450px;overflow:auto;scrollbar-width:thin;scrollbar-color:#7c62bb #f0eaff;padding-right:16px}
+.ig-icon{display:inline-flex;line-height:0;transition:transform .2s}
+.ig-icon img{width:42px;height:42px;border-radius:11px}
+.ig-icon:hover{transform:rotate(-8deg)}
+.footer{background:var(--lavender);border-top:2px solid var(--text);padding:30px 0;font-size:11px;font-weight:700}
+/* Artwork is retained; the surrounding layout brings a new personality. */
+.home .hero{padding-top:32px;padding-bottom:46px}
+.home .hero-video{width:100%;margin:0;background:#000;border:2px solid var(--text);border-radius:24px 24px 0 0;overflow:hidden}
+.home .hero-video img{width:100%!important;height:clamp(100px,15vw,180px)!important;object-fit:contain}
+.home .recruit-banner{display:block;padding:12px;background:var(--lavender);border:2px solid var(--text);border-top:0;border-radius:0 0 24px 24px;box-shadow:var(--shadow)}
+.home .recruit-banner img{border-radius:12px!important}
+.home .recruit-banner:hover{background:var(--accent)}
+.hero-intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:54px;padding:46px;background:var(--accent);border:2px solid var(--text);border-radius:32px;box-shadow:var(--shadow);position:relative}
+.hero-intro::after{content:"";position:absolute;right:24px;top:-16px;width:70px;height:24px;background:var(--coral);border:2px solid var(--text);transform:rotate(8deg)}
+.home .hero h1{margin:0;font-size:clamp(28px,3.4vw,48px);font-weight:900;line-height:1.65;letter-spacing:-.035em}
+.home .hero h1::before{display:none}
+.home .hero h1 i{display:block;font-style:normal}
+.home .hero h1 strong{font-weight:900}
+.home .hero h1 u{text-decoration:none;background:var(--lavender);box-shadow:6px 0 0 var(--lavender),-6px 0 0 var(--lavender);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-copy>p:first-child{font-weight:800;color:var(--text);font-size:14px}
+.hero-copy>p+p{font-size:13px}
+.hero-copy .btn.primary{background:var(--text);color:#fff;box-shadow:4px 4px 0 #fff}
+.hero-copy .btn.primary:hover{background:#34343f}
+.home .grid>.card:first-child{background:var(--lavender)}
+.home .grid>.card:last-child{background:var(--coral)}
+.home #newsTall{background:#fff}
+.newsTall{grid-row:span 2}
+.hero-media,.hero-slider{width:100%;overflow:hidden;position:relative;border:2px solid var(--text);border-radius:24px;margin-bottom:24px;background:#fff}
+.hero-media img{display:block;width:100%;height:clamp(220px,32vw,450px);object-fit:cover}
+.hero-slides{display:flex;width:100%;height:clamp(220px,32vw,450px);transition:transform 520ms ease;will-change:transform}
+.hero-slides img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block}
+.hero-nav{display:none}.hero-dots{position:absolute;left:0;right:0;bottom:16px;display:flex;gap:8px;justify-content:center}
+.hero-dot{width:30px;height:6px;padding:0;border:1px solid var(--text);background:#fff9;border-radius:12px;cursor:pointer}.hero-dot.is-active{background:var(--accent)}
+.hero-video video{display:block;width:100%;height:clamp(200px,28vw,300px);object-fit:cover}
+@media(max-width:1150px){
+ .header-inner{flex-direction:column;align-items:flex-start;gap:14px;padding-block:18px}
+ .nav{width:100%;justify-content:space-between;gap:5px}
+ .hero-intro{gap:28px;padding:32px}
 }
-.header-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
-.brand{ display:flex; align-items:center; gap:12px; }
-.brand img{ width:45px; height:45px; }
-.brand-title{ display:flex; flex-direction:column; line-height:1.2; }
-.brand-title strong{
-  font-size: 30px;
-  font-family: "Impact", "Impact", system-ui, -apple-system, sans-serif;
-  font-weight: 70; /* 太さもここで */
-  letter-spacing: 0.1px; /* 任意：少し締まる */
+@media(max-width:760px){
+ .container{width:calc(100% - 40px)}
+ .header-inner{gap:12px;padding-block:14px}
+ .brand{gap:10px}.brand img{width:40px;height:40px}
+ .brand-title span{font-size:9px}.brand-title strong{font-size:clamp(10px,2.8vw,16px)}
+ .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px 7px}
+ .nav a{font-size:10px;text-align:center;padding:6px 3px}
+ .hero{padding:40px 0 26px}.hero h1{font-size:36px}.hero p{font-size:13px}
+ .home .hero{padding:24px 0 32px}
+ .home .hero-video{border-radius:18px 18px 0 0}.home .recruit-banner{padding:7px;border-radius:0 0 18px 18px}
+ .home .recruit-banner img{border-radius:7px!important}
+ .hero-intro{grid-template-columns:1fr;padding:26px 22px;gap:24px;margin-top:32px;border-radius:24px}
+ .home .hero h1{font-size:clamp(23px,6.6vw,36px);line-height:1.75}
+ .hero-copy>p:first-child{font-size:13px}.hero-copy>p+p{font-size:12px}
+ .hero-copy>.cta>.btn.primary{flex-basis:100%}
+ .hero .cta{gap:14px;margin-top:24px}
+ .btn{font-size:12px;padding:12px 18px;min-height:48px}
+ .grid{padding-top:16px;padding-bottom:52px;gap:22px}
+ .cols-6,.cols-4,.cols-8{grid-column:span 12}.newsTall{grid-row:auto}
+ .card{padding:26px 22px;border-radius:20px}
+ .card h2{font-size:22px;gap:9px}.card p{font-size:13px}
+ #newsTall .list{max-height:420px;padding-right:10px}
+ .badge{font-size:10px;padding:4px 9px}.kv{gap:8px}
+ .footer{font-size:10px;padding-block:24px}
 }
-.brand-title span{
-  font-size: 11px;           /* 小さめに */
-  font-family: "Klee", system-ui, -apple-system, sans-serif;
-  letter-spacing: 0.01em;    /* 英字は間隔を少し開けると綺麗 */
-  text-transform: uppercase; /* 任意：大文字統一したい時 */
-}
-
-.nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
-.nav a{ 
-        font-size: 15px;
-        padding:3px 5px;
-        font-family: "Toppan Bunkyu Midashi Gothic", system-ui, -apple-system, sans-serif;
-        border-radius:10px;
-        border:1px solid transparent;
-        color:var(--muted); }
-
-.nav a[aria-current="page"]{ color:var(--text); border-color:var(--line); background:#87cefa; }
-
-.hero{ padding:44px 0 22px; }
-.hero h1{ margin:0 0 10px; font-size:34px; letter-spacing:0.3px; }
-.hero p{ margin:0; color:var(--muted); font-size:15px; line-height:1.75; }
-.hero .cta{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; }
-
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 14px; border-radius:12px; border:1px solid var(--line);
-  background:rgba(18,27,47,0.8); color:var(--text);
-}
-
-.btn.primary{
-  border-color:transparent;
-  background:var(--accent);
-  color:#fff;
-  font-weight:700;
-}
-
-.btn{
-    border-color:transparent;
-    background:var(--accent2);
-    color:#fff;
-    font-weight:700;
-  }
-
-.grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; padding:18px 0 40px; }
-.card{
-  grid-column: span 12;
-  border:1px solid var(--line);
-  background:var(--card);
-  border-radius:16px;
-  padding:16px;
-  box-shadow: var(--shadow);
-}
-.card h2{ margin:0 0 8px; font-size:18px; }
-.card p{ margin:0; color:var(--muted); line-height:1.75; }
-.kv{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-.badge{ padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; }
-
-.cols-6{ grid-column: span 12; }
-@media (min-width:860px){
-  .cols-6{ grid-column: span 6; }
-  .cols-4{ grid-column: span 4; }
-  .cols-8{ grid-column: span 8; }
-}
-
-.footer{
-  border-top:1px solid var(--line);
-  padding:18px 0 26px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.list{ margin:10px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-
-.item{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:14px;
-  padding:12px 12px;
-  box-shadow: 0 6px 18px rgba(10, 20, 40, 0.06);
-}
-.item .meta{ color:var(--muted); font-size:12px; margin-bottom:6px; }
-.item .title{ font-weight:700; margin-bottom:6px; }
-.item .body{ color:var(--muted); white-space:pre-wrap; line-height:1.75; }
-
-/* 見出しを“セクション感”出す */
-.card h2{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.card h2::before{
-  content:"";
-  width:10px; height:10px;
-  border-radius:3px;
-  background:var(--accent);
-}
-
-/* PICK UPだけ赤寄りにしたい時（任意） */
-#pickupCard h2::before{ background: var(--accent2); }
-
-/* heroを白背景向けに少し締める（任意） */
-.hero h1{ letter-spacing:0.2px; }
-
-.hero-media{
-  width:100%;
-  margin: 0 0 18px;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid var(--line);
-  background: #fff;
-}
-
-.hero-media img{
-  width:100%;
-  height: clamp(220px, 32vw, 450px);
-  object-fit: cover;
-  display:block;
-}
-
-.card h2{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.card h2::before{
-  content:"";
-  width:10px; height:10px;
-  border-radius:3px;
-  background: var(--accent);
-}
-
-/* 特定カードだけ赤にしたい時（IDを使う） */
-#pickupCard h2::before{ background: var(--accent2); }
-#nextCard h2::before{ background: var(--accent); }
-
-
-/* Hero Slider (横スライド + 下部バー) */
-.hero-slider{
-  position: relative;
-  width: 100%;
-  margin: 0 0 18px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: #fff;
-  box-shadow: var(--shadow, 0 8px 24px rgba(10, 20, 40, 0.08));
-}
-
-/* 横に流す“レール” */
-.hero-slides{
-  display: flex;
-  width: 100%;
-  height: clamp(220px, 32vw, 450px); /* ←高さ調整はここ */
-  transform: translateX(0);
-  transition: transform 520ms ease;
-  will-change: transform;
-}
-
-/* 1枚＝画面幅いっぱい */
-.hero-slides img{
-  flex: 0 0 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 以前のフェード用クラスが残ってても問題ないように */
-.hero-slides img{ opacity: 1 !important; transform:none !important; }
-
-/* 左右ボタンは使わない（HTMLに残ってても非表示） */
-.hero-nav{ display:none; }
-
-/* 下部ナビ（横長バー） */
-.hero-dots{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 10px;
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: 0 12px;
-}
-
-/* 横長の棒 */
-.hero-dot{
-  width: 38px;
-  height: 6px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.55);
-  background: rgba(0,0,0,0.25);
-  cursor: pointer;
-}
-
-/* 選択中は白く */
-.hero-dot.is-active{
-  background: rgba(255,255,255,0.95);
-  border-color: rgba(255,255,255,0.75);
-}
-
-#newsTall .list{
-  max-height: 300px;
-  overflow: auto;
-  padding-right: 6px;
-}
-
-.ig-icon{
-  display:inline-flex;
-  line-height: 0; /* 画像の下の余白を消す */
-}
-
-.ig-icon img{
-  width: 44px;   /* 好きなサイズに */
-  height: 44px;
-  border-radius: 12px;  /* ←角丸 */
-  display:block;
-}
-
-.ig-icon:hover img{
-  filter: brightness(1.05);
-}
-
-/* 右：ニュースを“2カード分”の高さにする（PC表示だけ） */
-@media (min-width:300px){
-  .newsTall{
-    grid-row: span 2;
-  }
-}
-
-/* スマホ表示だけ文字を小さくする */
-@media (max-width: 480px){
-  /* トップの見出し */
-  .hero h1{
-    font-size: 21px;   /* ← ここで調整 */
-    line-height: 1.25;
-  }
-
-  /* トップの説明文 */
-  .hero p{
-    font-size: 13px;   /* ← ここで調整 */
-    line-height: 1.7;
-  }
-
-  .card p{
-     font-size: 15px;
-     line-height:1.7;
-  }
-
-  /* ボタン */
-  .btn{
-    padding: 9px 12px;
-    font-size: 13px;
-  }
-
-  /* バッジ */
-  .badge{
-    font-size: 11px;
-    padding: 5px 9px;
-  }
-
-  /* ヘッダーのチーム名（日本語/英字） */
-  .brand-title span{ font-size: 10px; }
-  .brand-title strong{ font-size: 25px; }
-}
-/* スマホだけ：ロゴ/タイトルの下にナビを配置 */
-@media (max-width: 640px){
-  .header-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav{
-    width: 100%;
-    justify-content: flex-start; /* 左寄せ */
-  }
-
-   .nav a{
-    font-size: 10px;     /* ←ここを好みで 11〜13px */
-    padding: 6px 4px;    /* ←ついでに小さめに（任意） */
-  }
-}
-@media (max-width: 640px){
-  .nav{
-    flex-wrap: wrap;
-    row-gap: 6px;
-  }
-}
-
-
-.brand{ cursor: default; }
-
-.hero-video{
-  width: 70%;
-  margin: 0 auto 18px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: #000;
-  box-shadow: var(--shadow);
-}
-
-.hero-video video{
-  width: 100%;
-  height: clamp(200px, 28vw, 240px); /* ←高さ調整はここ */
-  object-fit: cover;
-  display: block;
-}
-
-
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
